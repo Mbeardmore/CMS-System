@@ -1,0 +1,40 @@
+table {
+	width: 100%;
+	max-width: 100%;
+	border-collapse: collapse;
+	font-family: 'Open Sans', sans-serif;
+	
+}
+
+
+
+table.search, th, td {
+	border: 1px solid #ddd;
+	
+}
+th, td {
+	padding: 15px;
+
+}
+th {
+	height:50px;
+	text-align: left;
+	vertical-align: bottom;
+	color: white;
+	background-color: #222222;
+}
+
+tr:hover {
+	background-color: #f5f5f5;
+}
+
+
+
+div.navbar-admin {
+	position:absolute;
+	top: 12%;
+	right: 0;
+
+}
+
+

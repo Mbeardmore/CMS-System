@@ -1,0 +1,113 @@
+
+body.sigin-body {
+  background-color: #e6f2ff;
+}
+
+.container.signin-container {
+  margin-top: 8%;
+}
+
+.card.signin-card {
+  padding: 40px 0px 20px;
+  background-color: #f4f4f4;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, .5);
+  -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, .5);
+  -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, .5);
+}
+
+img.signin-img {
+  padding: 0 2rem 2rem;
+  margin: auto;
+  display: block;
+}
+
+form.sigin-form {
+  max-width: 350px;
+  margin: auto;
+}
+
+button.signin-btn {
+  color: #ffffff;
+  background-color: #d64829;
+  width: 100%;
+  margin-bottom: 1.2rem;
+}
+
+a.create-new-account {
+  font-size: 1.2rem;
+  text-align: center;
+  display: block;
+  margin-top: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+div.loginform {
+	display: inline-block;
+	top: 3%;
+	right:0;
+	position: absolute;
+}
+
+div.nav-main-admin {
+	width: 15%;
+	margin: 15px;
+}
+
+table {
+	width: 80%;
+	max-width: 80%;
+	border-collapse: collapse;
+	margin: auto;
+	font-family: 'Open Sans', sans-serif;
+	
+}
+
+table.search {
+	position:fixed;
+	width: 70%;
+	left: 15%;
+}
+
+
+table.search, th, td {
+	border: 1px solid #ddd;
+	
+}
+th, td {
+	padding: 15px;
+
+}
+th {
+	height:50px;
+	text-align: left;
+	vertical-align: bottom;
+	color: white;
+	background-color: #212529;
+}
+
+tr:hover {
+	background-color: #f5f5f5;
+}
+
+div.well {
+	max-width: 70%;
+	margin: auto;
+	margin-top: 15%;
+}
+
+div.navbar-admin {
+	position:absolute;
+	top: 12%;
+	right: 0;
+
+}
+
+
