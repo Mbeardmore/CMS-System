@@ -1,16 +1,15 @@
-<?php 
+<?php
 
-include "Includes/header.php"; 
-  
+include "Includes/header.php";
+
 
 if (isset($_SESSION['ID']) && $_SESSION['user_role']=='Admin' ||  $_SESSION['user_role'] =='Manager') {
 
-include "Includes/navbar.php"; 
+include "Includes/navbar.php";
 
-include "Includes/sidenav.php"; 
+include "Includes/sidenav.php";
 
-echo '
-
+?>
 <body>
 
 
@@ -34,12 +33,12 @@ echo '
                         <div class="panel-body">
 
 
-   
-   
-   
-   
-    <form action="" method="POST" enctype="multipart/form-data">    
-     
+
+
+
+
+    <form action="" method="POST" enctype="multipart/form-data">
+
       <div class="form-group">
          <label for="title">Item Name</label>
           <input   type="text" class="form-control" name="item_name">
@@ -72,29 +71,30 @@ echo '
          <label for="title">Date Of Last Purchase</label>
           <input   type="text" class="form-control" name="purchase_date">
       </div>
-    
+
        <div class="form-group">
           <input class="btn btn-primary" type="submit" name="create_item" value="Update Post">
       </div>
 
 
-</form>';
+</form>
 
-
-
+<?php
 
 if (isset($_POST['create_item'])) {
 
   createitem();
-
 }
 
-echo '</div>
+?>
 </div>
 </div>
 </div>
 </div>
-</div>';
+</div>
+</div>
+
+<?php
 
 } else {
 
