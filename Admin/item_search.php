@@ -1,15 +1,15 @@
-<?php 
+<?php
 
 
-include "Includes/header.php"; 
+include "Includes/header.php";
 
 if (isset($_SESSION['ID']) && $_SESSION['user_role']=='Admin' ||  $_SESSION['user_role'] == 'Manager') {
 
-include "Includes/navbar.php"; 
+include "Includes/navbar.php";
 
-include "Includes/sidenav.php"; 
+include "Includes/sidenav.php";
 
-echo '
+?>
 
 
 
@@ -36,7 +36,7 @@ echo '
                         <div class="panel-body">
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
-                                    <tr>   
+                                    <tr>
                                         <th>ID</th>
                                         <th>Image</th>
                                         <th>Product Name</th>
@@ -51,21 +51,20 @@ echo '
                                         <th>Delete</th>
                                     </tr>
                                 </thead>
-                                <tbody>';
-                                    
+                                <tbody>
 
 
 
 
+<?php
 
-itemSearch(); 
+itemSearch();
 
 if (isset($_GET['delete_item'])) {
 
     deleteitem();
 }
-
-echo '
+?>
 
 
  </tbody>
@@ -89,7 +88,9 @@ echo '
 </div>
 </div>
 </div>
-</div>';
+</div>
+
+<?php
 
 
 
