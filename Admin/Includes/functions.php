@@ -248,4 +248,27 @@ function alteritem(){
 
         echo "<p class='bg-success'>Post Updated. <a href='../post.php?p_id={$name}'>View Post </a> or <a href='item_search.php'>Edit More Posts</a></p>";
 }
+
+function usersearch()
+{
+
+    global $connection;
+
+    $query = "SELECT u_first FROM user;";
+
+    $display_all = mysqli_query($connection, $query);
+
+
+    while ($row = mysqli_fetch_assoc($display_all)) {
+        $firstname             = $row['u_first'];
+
+
+        echo "<option value='$firstname'>" . $firstname . "</option>";
+
+  
+
+    }
+
+  }
+
 ?>

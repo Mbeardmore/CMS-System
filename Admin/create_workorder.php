@@ -4,7 +4,7 @@ include "Includes/header.php";
 
 if (isset($_SESSION['ID']) && $_SESSION['user_role']=='Admin' ||  $_SESSION['user_role'] == 'Manager') {
 
-
+include "Includes/navbar.php";
 include "Includes/sidenav.php";
 
 echo '
@@ -58,15 +58,25 @@ echo '
                     <label for="date"> End Date </label>
                     <input type="date" class="form-control" id="date" name="end_date">
                 </div>
+                <div class="form-group" style="float:right;position: fixed;right: 28%;display: grid;"">
+                <label for="assigned"> Assign Users </label>
+                <select class="selectpicker" id="assigned"multiple data-actions-box="true" data-live-search="true">'; 
+                usersearch();
+                echo '
+                </select>
+                </div>
                 <br>
                 <br>
                 <br>
                 <br>
-                <div class="form-group" style="max-width:45%;display:block;">
+                <div class="form-group" style="max-width:45%;display:block;" style="float:left;"">
                     <label for="post_content">Job Details</label>
                     <textarea class="form-control " name="Job-Details" id="" cols="30" rows="10">
                     </textarea>
                 </div>
+                
+
+
                 <div class="form-group">
                     <input class="btn btn-primary" type="submit" name="create_wo" value="Update Post">
                 </div>
@@ -83,4 +93,5 @@ echo '
 
 
       include "Includes/footer.php";
+      ?>
 ?>

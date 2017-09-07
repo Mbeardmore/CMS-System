@@ -39,6 +39,13 @@ while ($row = mysqli_fetch_assoc($result)) {
              $_SESSION['u_last'] = $ulast;
              $_SESSION['u_email'] = $uemail;
              $_SESSION['user_role'] = $urole;
+						 $format = date('d/m/Y H:i:s');
+						 $date = "UPDATE user SET Last_Signed_in = '{$format}' WHERE ID = '{$UID}'";
+
+						 $setdate = mysqli_query($connection, $date);
+
+						 confirmQuery($setdate);
+
 
 
 
