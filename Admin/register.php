@@ -1,13 +1,13 @@
-<?php 
+<?php
 
-include "Includes/header.php"; 
-  
+include "Includes/header.php";
+
 
 if (isset($_SESSION['ID']) && $_SESSION['user_role']=='Admin' ||  $_SESSION['user_role'] =='Manager') {
 
-include "Includes/navbar.php"; 
+include "Includes/navbar.php";
 
-include "Includes/sidenav.php"; 
+include "Includes/sidenav.php";
 
 echo '
 
@@ -34,8 +34,8 @@ echo '
                         <div class="panel-body">
 
 
-   
-   
+
+
    <script>
     function supportMultiple() {
         //do I support input type=file/multiple
@@ -50,9 +50,9 @@ echo '
         }
     }
 </script>
-   
-    <form action="" method="POST" enctype="multipart/form-data">    
-     
+
+    <form action="" method="POST" enctype="multipart/form-data">
+
       <div class="form-group">
          <label for="title">username</label>
           <input   type="text" class="form-control" name="user">

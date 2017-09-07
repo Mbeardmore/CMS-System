@@ -1,10 +1,11 @@
-<?php 
+<?php
 
-include "Includes/header.php"; 
-  
-if (isset($_SESSION['ID']) && $_SESSION['user_role']==='Admin') {include "Includes/navbar.php"; 
+include "Includes/header.php";
 
-include "Includes/sidenav.php"; 
+if (isset($_SESSION['ID']) && $_SESSION['user_role']=='Admin' ||  $_SESSION['user_role'] == 'Manager') {
+
+
+include "Includes/sidenav.php";
 
 echo '
 
@@ -45,8 +46,8 @@ echo '
                 <div class="form-group" style="max-width:25%; display:block;">
                     <label for="exampleSelect1">Active</label>
                     <select class="form-control" id="exampleSelect1">
-                        <option value="0">Not Active</option>
-                        <option value="1">Active </option>
+                        <option value="Not Active">Not Active</option>
+                        <option value="Active">Active </option>
                     </select>
                 </div>
                 <div class="form-group" style="max-width:30%;float:left;">
@@ -75,11 +76,11 @@ echo '
 </div>
 </div>
 </div>
-</div>'; 
-} else { 
+</div>';
+} else {
       header ("Location: ../index.html");
-       } 
+       }
 
 
-      include "Includes/footer.php"; 
+      include "Includes/footer.php";
 ?>

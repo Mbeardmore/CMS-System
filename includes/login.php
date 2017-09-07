@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 include_once "db.php";
 include_once "../Admin/Includes/functions.php";
@@ -8,7 +8,7 @@ if (isset($_POST['submit'])) {
 	$uid = escape($_POST['uid']);
 	$pwd = escape($_POST['pwd']);
 
-	
+
 
 	# Error Handlers
 
@@ -32,14 +32,14 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 	if (password_verify($pwd,$upwd)) {
 
-		
+
              $_SESSION['ID'] = $UID;
              $_SESSION['u_name'] = $uname;
              $_SESSION['u_first'] = $ufirst;
              $_SESSION['u_last'] = $ulast;
              $_SESSION['u_email'] = $uemail;
              $_SESSION['user_role'] = $urole;
-             
+
 
 
 
@@ -51,7 +51,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
              header("Location: ../index.html");
              return false;
-       
+
 
 
 
