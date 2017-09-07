@@ -73,11 +73,21 @@ echo '
          <label for="title">password</label>
           <input  type="password" class="form-control" name="pwd">
       </div>
-      <div class="form-group"></div>
+      <div class="form-group" style="max-width:25%; display:block;">
+          <label for="exampleSelect1">User Role</label>
+          <select class="form-control" id="exampleSelect1" name="user_role">
+              <option value="Manager">Manager</option>
+              <option value="Admin">Admin</option>
+              <option value="Technician">Technician</option>
+          </select>
+      </div>
+      <div class="form-group">
         <label class="custom-file">
         <input type="file" id="file" class="custom-file-input">
         <span class="custom-file-control"></span>
         </label>
+        </div>
+
        <div class="form-group">
           <input class="btn btn-primary" type="submit" name="create_user">
       </div>

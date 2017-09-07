@@ -2,40 +2,40 @@
 
 function escape($string)
 {
-    
+
     global $connection;
-    
+
     return mysqli_real_escape_string($connection, trim($string));
-    
-    
+
+
 }
 
 function confirmQuery($result)
 {
-    
+
     global $connection;
-    
+
     if (!$result) {
-        
+
         die("QUERY FAILED ." . mysqli_error($connection));
-        
-        
+
+
     }
-    
-    
+
+
 }
 
 
 function ItemSearch()
 {
-    
+
     global $connection;
-    
+
     $query = "SELECT * FROM stock_management";
-    
+
     $display_all = mysqli_query($connection, $query);
-    
-    
+
+
     while ($row = mysqli_fetch_assoc($display_all)) {
         $id             = $row['ID'];
         $image          = $row['item_image'];
@@ -47,7 +47,7 @@ function ItemSearch()
         $stock          = $row['stock_level'];
         $lastpurchase   = $row['L_PURCHASE'];
         $Stock_Location = $row['Stock_Location'];
-        
+
         echo "<tr>";
         echo "<td>" . $id . "</td>";
         echo "<td>" . $image . "</td>";
@@ -62,11 +62,11 @@ function ItemSearch()
         echo "<td><a href='Alter_item.php?edit_item={$id}'>Edit</a></td>";
         echo "<td><a href='item_search.php?delete_item={$id}'>Delete</a></td>";
         echo "</tr>";
-        
-        
+
+
     }
-    
-    
+
+
 }
 
 
@@ -83,7 +83,7 @@ function selectall()
 function createitem() {
 
 global $connection;
-   
+
   $item_name         = escape($_POST['item_name']);
   $item_supplier     = escape($_POST['item_supplier']);
   $pexvat            = escape($_POST['price_exvat']);
@@ -136,11 +136,12 @@ function createuser() {
     $lname = escape($_POST['l_name']);
     $email = escape($_POST['email']);
     $pwd = escape($_POST['pwd']);
+    $userrole = escape ($_POST['user_role']);
 
     $password = password_hash( $pwd, PASSWORD_BCRYPT, array('cost' => 12));
-  
-    $query = "INSERT INTO user (u_name, u_first, u_last, u_email, u_pwd) ";
-    $query .= "VALUES ('{$username}','{$fname}','{$lname}','{$email}','{$password}') ";
+
+    $query = "INSERT INTO user (u_name, u_first, u_last, u_email, u_pwd, user_role) ";
+    $query .= "VALUES ('{$username}','{$fname}','{$lname}','{$email}','{$password}','{$userrole}') ";
 
     $result = mysqli_query($connection, $query);
 
@@ -148,14 +149,14 @@ function createuser() {
 }
 
 function viewallusers() {
-    
+
     global $connection;
-    
+
     $query = "SELECT * FROM user";
 
     $display_all = mysqli_query($connection, $query);
-    
-    
+
+
     while ($row = mysqli_fetch_assoc($display_all)) {
         $id             = $row['ID'];
         $username       = $row['u_name'];
@@ -177,11 +178,11 @@ function viewallusers() {
         echo "<td><a href='edit_user.php?edit_user={$id}'>Edit</a></td>";
         echo "<td><a href='item_search.php?delete_item={$id}'>Delete</a></td>";
         echo "</tr>";
-        
-        
+
+
     }
-    
-    
+
+
 }
 
 function updateuser() {
@@ -193,11 +194,11 @@ function updateuser() {
     $first           = escape($_POST['f_name']);
     $last            = escape($_POST['l_name']);
     $email           = escape($_POST['email']);
-    $userrole        = escape($_POST['user_role']); 
-   
+    $userrole        = escape($_POST['user_role']);
 
 
-        
+
+
           $query = "UPDATE user SET ";
           $query .="u_name  = '{$username}', ";
           $query .="u_first = '{$first}', ";
@@ -207,9 +208,9 @@ function updateuser() {
           $query .= "WHERE ID = {$userid} ";
 
         $update_user = mysqli_query($connection,$query);
-        
+
         confirmQuery($update_user);
-        
+
         echo "<p class='bg-success'>user Updated. <a href='../post.php?p_id={$userid}'>View Post </a> or <a href='item_search.php'>Edit More Posts</a></p>";
 }
 function alteritem(){
@@ -227,10 +228,10 @@ function alteritem(){
 
     $buy = "£". $pexvat;
     $sell = "£". $sellprice;
-        
 
 
-        
+
+
           $query = "UPDATE stock_management SET ";
           $query .="prod_name  = '{$name}', ";
           $query .="supplier_name = '{$supplier}', ";
@@ -240,11 +241,11 @@ function alteritem(){
           $query .="stock_level= '{$stock}', ";
           $query .="L_PURCHASE  = '{$lastpurchase}' ";
           $query .= "WHERE ID = {$item_Id} ";
-        
+
         $update_post = mysqli_query($connection,$query);
-        
+
         confirmQuery($update_post);
-        
+
         echo "<p class='bg-success'>Post Updated. <a href='../post.php?p_id={$name}'>View Post </a> or <a href='item_search.php'>Edit More Posts</a></p>";
 }
 ?>
