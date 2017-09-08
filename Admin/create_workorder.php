@@ -26,18 +26,22 @@ echo '
 <div class="col-lg-12">
     <div class="panel panel-default">
         <div class="panel-heading">
-            Work Order Form
+                  Work Order Form
+                  <div class="panel_heading" style="float:right">';
+                  echo "<b>Creator:</b>" . " " . $_SESSION['u_first'] . " " . $_SESSION['u_last'];
+                  echo'
+                  </div>
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
             <form action="" method="POST" enctype="multipart/form-data">
                 <div class="form-group" style="float:left;width:45%;">
                     <label for="title">Job Location</label>
-                    <input type="text" class="form-control" name="jobb_location">
+                    <input type="text" class="form-control" name="job_location">
                 </div>
                 <div class="form-group" style="float:right;width:45%">
                     <label for="title">Work Order Number</label>
-                    <input type="text" placeholder="WO1123423" class="form-control" name="item_name">
+                    <input type="text" placeholder="WO1123423" class="form-control" name="wo_number">
                 </div>
                 <div class="form-group" style="float:right;width:25%;position:relative;right:20%">
                     <label for="title">Floor Size</label>
@@ -45,7 +49,7 @@ echo '
                 </div>
                 <div class="form-group" style="max-width:25%; display:block;">
                     <label for="exampleSelect1">Active</label>
-                    <select class="form-control" id="exampleSelect1">
+                    <select class="form-control" id="exampleSelect1" name="Active">
                         <option value="Not Active">Not Active</option>
                         <option value="Active">Active </option>
                     </select>
@@ -60,7 +64,7 @@ echo '
                 </div>
                 <div class="form-group" style="float:right;position: fixed;right: 28%;display: grid;"">
                 <label for="assigned"> Assign Users </label>
-                <select class="selectpicker" id="assigned"multiple data-actions-box="true" data-live-search="true">'; 
+                <select class="selectpicker" name="assigned[]" multiple data-actions-box="true" data-live-search="true">';
                 usersearch();
                 echo '
                 </select>
@@ -69,17 +73,15 @@ echo '
                 <br>
                 <br>
                 <br>
-                <div class="form-group" style="max-width:45%;display:block;" style="float:left;"">
+                <div class="form-group" style="max-width:45%;display:block;" style=""">
                     <label for="post_content">Job Details</label>
                     <textarea class="form-control " name="Job-Details" id="" cols="30" rows="10">
                     </textarea>
                 </div>
-                
-
-
                 <div class="form-group">
-                    <input class="btn btn-primary" type="submit" name="create_wo" value="Update Post">
+                    <input class="btn btn-primary" type="submit" name="create_wo" value="create">
                 </div>
+
             </form>
         </div>
     </div>
@@ -87,6 +89,9 @@ echo '
 </div>
 </div>
 </div>';
+if (isset($_POST['create_wo'])) {
+  createworkorder();
+}
 } else {
       header ("Location: ../index.html");
        }
@@ -94,4 +99,3 @@ echo '
 
       include "Includes/footer.php";
       ?>
-?>

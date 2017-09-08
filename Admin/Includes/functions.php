@@ -260,15 +260,83 @@ function usersearch()
 
 
     while ($row = mysqli_fetch_assoc($display_all)) {
-        $firstname             = $row['u_first'];
+        $firstname       = $row['u_first'];
 
 
         echo "<option value='$firstname'>" . $firstname . "</option>";
 
-  
+
 
     }
 
   }
 
+  function createworkorder() {
+
+    global $connection;
+      $creator = $_SESSION['u_first'];
+      $joblocation = escape($_POST['job_location']);
+      $wonumber = escape($_POST['wo_number']);
+      $floorsize = escape($_POST['floor_size']);
+      $active = escape($_POST['Active']);
+      $startdate = escape($_POST['start_date']);
+      $enddate = escape ($_POST['end_date']);
+      $assigned = $_POST['assigned'];
+      $Jobdetails = escape ($_POST['Job-Details']);
+      $sitecontact = "test";
+      $datetoday = date('d/m/Y');
+
+      $assignedtech = implode(", ", $assigned);
+
+      $query = "INSERT INTO work_orders (creator, Work_Order, job_location, date_today, date_start, date_end, Assigned_user,  job_info, floor_size, Active, site_contact) ";
+      $query .= "VALUES ('{$creator}','{$wonumber}','{$joblocation}','{$datetoday}','{$startdate}','{$enddate}','{$assignedtech}','{$Jobdetails}','{$floorsize}','{$active}','{$sitecontact}') ";
+
+      $result = mysqli_query($connection, $query);
+
+      confirmQuery($result);
+  }
+
+
+  // function WOSearch()
+  // {
+  //
+  //     global $connection;
+  //
+  //     $query = "SELECT * FROM work_orders";
+  //
+  //     $display_all = mysqli_query($connection, $query);
+  //
+  //
+  //     while ($row = mysqli_fetch_assoc($display_all)) {
+  //         $id             = $row['ID'];
+  //         $image          = $row['item_image'];
+  //         $name           = $row['prod_name'];
+  //         $supplier       = $row['supplier_name'];
+  //         $pexvat         = $row['P_PRICE_EXVAT'];
+  //         $sellprice      = $row['P_SELL'];
+  //         $size           = $row['SIZE'];
+  //         $stock          = $row['stock_level'];
+  //         $lastpurchase   = $row['L_PURCHASE'];
+  //         $Stock_Location = $row['Stock_Location'];
+  //
+  //         echo "<tr>";
+  //         echo "<td>" . $id . "</td>";
+  //         echo "<td>" . $image . "</td>";
+  //         echo "<td>" . $name . "</td>";
+  //         echo "<td>" . $supplier . "</td>";
+  //         echo "<td>" . $pexvat . "</td>";
+  //         echo "<td>" . $sellprice . "</td>";
+  //         echo "<td>" . $size . "</td>";
+  //         echo "<td>" . $stock . "</td>";
+  //         echo "<td>" . $lastpurchase . "</td>";
+  //         echo "<td>" . $Stock_Location . "</td>";
+  //         echo "<td><a href='Alter_item.php?edit_item={$id}'>Edit</a></td>";
+  //         echo "<td><a href='item_search.php?delete_item={$id}'>Delete</a></td>";
+  //         echo "</tr>";
+  //
+  //
+  //     }
+  //
+  //
+  // }
 ?>
