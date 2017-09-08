@@ -7,7 +7,7 @@
             <a class="pull-left" href="#">
                 <img class="media-object dp img-circle" src="https://cdn3.iconfinder.com/data/icons/basic-icon-set/32/test-14-512.png" style="width:100px;height:100px;">
             </a>
-        </div>   
+        </div>
 </div>
 <br>
 <br>
@@ -44,7 +44,7 @@
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
-                        </li>'; 
+                        </li>';
                     } else {}
                         ?>
                         <li>
@@ -54,9 +54,9 @@
                                     <a href="create_workorder.php">Create Work Order</a>
                                 </li>
                                 <li>
-                                    <a href="add_item.php">View Work Orders</a>
+                                    <a href="wo_viewall.php">View Work Orders</a>
                                 </li>
-                            </ul>       
+                            </ul>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-users"></i> Users<span class="fa arrow"></span></a>

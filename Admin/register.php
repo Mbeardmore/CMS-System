@@ -11,7 +11,7 @@ include "Includes/sidenav.php";
 
 echo '
 
-<body onload="init()">
+<body>
 
 
  <div id="wrapper">
@@ -32,24 +32,6 @@ echo '
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-
-
-
-
-   <script>
-    function supportMultiple() {
-        //do I support input type=file/multiple
-        var el = document.createElement("input");
-
-        return ("multiple" in el);
-    }
-
-    function init() {
-        if(supportMultiple()) {
-            document.querySelector("#multipleFileLabel").setAttribute("style","");
-        }
-    }
-</script>
 
     <form action="" method="POST" enctype="multipart/form-data">
 
