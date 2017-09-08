@@ -30,9 +30,9 @@ echo '
                     <option value="Apple_Strip_FOH">Apple Deep & Seal FOH</option>
                     <option value="Apple_ardex">Apple Ardex Removal</option>
                     <option value="Apple_hone">Apple Stone Honing</option>
-                    <option value="Apple_strip_BOH">DApple Strip & Seal BOH</option>
+                    <option value="Apple_strip_BOH">Apple Strip & Seal BOH</option>
 
-                   
+
 
                 </select>
                 </div>
@@ -91,7 +91,7 @@ echo '
                 <br>
                 <br>
                 <br>
-                <div class="form-group" style="max-width:45%;display:block;" style="padding-left: 0px;"">
+                <div class="form-group" style="max-width:45%;display:block;position:relative;top:-50px">
                     <label for="post_content">Job Details</label>
                     <textarea class="form-control " name="Job-Details" id="" cols="30" rows="10">
                     </textarea>

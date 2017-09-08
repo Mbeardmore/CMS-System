@@ -38,10 +38,10 @@ include "Includes/sidenav.php";
                                 <thead>
                                     <tr>
                                         <th>ID</th>
+                                        <th>creator</th>
                                         <th>Job Location</th>
                                         <th>Work Order </th>
                                         <th>Active</th>
-                                        <th>creator</th>
                                         <th></th>
                                         <th></th>
                                         <th></th>
