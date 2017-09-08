@@ -19,7 +19,23 @@ echo '
             <div class="col-lg-12">
                 <h1 class="page-header">Create Work order</h1>
             </div>
-            <!-- /.col-lg-12 -->
+            <div class="form-group" style="display:inline-grid;margin-left:1%;">
+                <label for="jobtype"> Job Type </label>
+                <select class="selectpicker" name="Jobtype">
+                    <option value="Stone_rest">Stone Floor Restoration</option>
+                    <option value="wood_rest">Wood Floor Restoration</option>
+                    <option value="Hardfloor_rest">Hard Floor Restoration</option>
+                    <option value="carpet_clean">Carpet Cleaning</option>
+                    <option value="Slip_Treatment">Slip Treatment</option>
+                    <option value="Apple_Strip_FOH">Apple Deep & Seal FOH</option>
+                    <option value="Apple_ardex">Apple Ardex Removal</option>
+                    <option value="Apple_hone">Apple Stone Honing</option>
+                    <option value="Apple_strip_BOH">DApple Strip & Seal BOH</option>
+
+                   
+
+                </select>
+                </div>
         </div>
         <!-- /.row -->
         <div class="row">
@@ -54,15 +70,17 @@ echo '
                         <option value="Active">Active </option>
                     </select>
                 </div>
-                <div class="form-group" style="max-width:30%;float:left;">
-                    <label for="date"> Date Starts </label>
+                <div class="form-group" name="dates" style="display:inline-table;">
+                <div class="form-group" style="max-width:45%;float:left;">
+                    <label for="date"> Start Date </label>
                     <input type="date" class="form-control" id="date" name="start_date">
                 </div>
-                <div class="form-group" style="max-width:30%;float:right;position:relative;right:75%">
+                <div class="form-group" style="max-width:45%;float:right">
                     <label for="date"> End Date </label>
                     <input type="date" class="form-control" id="date" name="end_date">
                 </div>
-                <div class="form-group" style="float:right;position: fixed;right: 28%;display: grid;"">
+                </div>
+                <div class="form-group" style="display:inline-grid;position:relative;right:22.6%;top:10px;"">
                 <label for="assigned"> Assign Users </label>
                 <select class="selectpicker" name="assigned[]" multiple data-actions-box="true" data-live-search="true">';
                 usersearch();
@@ -73,7 +91,7 @@ echo '
                 <br>
                 <br>
                 <br>
-                <div class="form-group" style="max-width:45%;display:block;" style=""">
+                <div class="form-group" style="max-width:45%;display:block;" style="padding-left: 0px;"">
                     <label for="post_content">Job Details</label>
                     <textarea class="form-control " name="Job-Details" id="" cols="30" rows="10">
                     </textarea>
@@ -89,6 +107,8 @@ echo '
 </div>
 </div>
 </div>';
+
+
 if (isset($_POST['create_wo'])) {
   createworkorder();
 }
