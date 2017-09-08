@@ -38,10 +38,17 @@ include "Includes/sidenav.php";
                                 <thead>
                                     <tr>
                                         <th>ID</th>
+<<<<<<< HEAD
                                         <th>creator</th>
                                         <th>Job Location</th>
                                         <th>Work Order </th>
                                         <th>Active</th>
+=======
+                                        <th>Job Location</th>
+                                        <th>Work Order </th>
+                                        <th>Active</th>
+                                        <th>creator</th>
+>>>>>>> 2225d3fae95dbaaefa2784401b8aa2df28470f84
                                         <th></th>
                                         <th></th>
                                         <th></th>

@@ -91,7 +91,11 @@ echo '
                 <br>
                 <br>
                 <br>
+<<<<<<< HEAD
                 <div class="form-group" style="max-width:45%;display:block;position:relative;top:-50px">
+=======
+                <div class="form-group" style="max-width:45%;display:block;" style=""">
+>>>>>>> 2225d3fae95dbaaefa2784401b8aa2df28470f84
                     <label for="post_content">Job Details</label>
                     <textarea class="form-control " name="Job-Details" id="" cols="30" rows="10">
                     </textarea>
@@ -107,8 +111,11 @@ echo '
 </div>
 </div>
 </div>';
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 2225d3fae95dbaaefa2784401b8aa2df28470f84
 if (isset($_POST['create_wo'])) {
   createworkorder();
 }
