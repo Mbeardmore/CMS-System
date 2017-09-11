@@ -235,7 +235,7 @@ function alteritem(){
           $query = "UPDATE stock_management SET ";
           $query .="prod_name  = '{$name}', ";
           $query .="supplier_name = '{$supplier}', ";
-          $query .="P_PRICE_EXVAT = '{$buy}', ";
+          $query .="P_PRICE_EXVAT =  '{$buy}', ";
           $query .="P_SELL = '{$sell}', ";
           $query .="SIZE   = '{$size}', ";
           $query .="stock_level= '{$stock}', ";
@@ -246,7 +246,7 @@ function alteritem(){
 
         confirmQuery($update_post);
 
-        echo "<p class='bg-success'>Post Updated. <a href='../post.php?p_id={$name}'>View Post </a> or <a href='item_search.php'>Edit More Posts</a></p>";
+        echo "<p class='bg-success'>Item Updated. <a href='../post.php?p_id={$name}'>View Item </a> or <a href='item_search.php'>Edit More Items</a></p>";
 }
 
 function usersearch()
@@ -283,13 +283,14 @@ function usersearch()
       $enddate = escape ($_POST['end_date']);
       $assigned = $_POST['assigned'];
       $Jobdetails = escape ($_POST['Job-Details']);
+      $procedure = escape ($_POST['Procedure']);
       $sitecontact = "test";
       $datetoday = date('d/m/Y');
 
       $assignedtech = implode(", ", $assigned);
 
-      $query = "INSERT INTO work_orders (creator, Work_Order, job_location, date_today, date_start, date_end, Assigned_user,  job_info, floor_size, Active, site_contact) ";
-      $query .= "VALUES ('{$creator}','{$wonumber}','{$joblocation}','{$datetoday}','{$startdate}','{$enddate}','{$assignedtech}','{$Jobdetails}','{$floorsize}','{$active}','{$sitecontact}') ";
+      $query = "INSERT INTO work_orders (creator, Work_Order, job_location, date_today, date_start, date_end, Assigned_user,  job_info, procedures, floor_size, Active, site_contact) ";
+      $query .= "VALUES ('{$creator}','{$wonumber}','{$joblocation}','{$datetoday}','{$startdate}','{$enddate}','{$assignedtech}','{$Jobdetails}','{$procedure}',{$floorsize}','{$active}','{$sitecontact}') ";
 
       $result = mysqli_query($connection, $query);
 

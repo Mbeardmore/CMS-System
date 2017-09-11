@@ -66,7 +66,7 @@ $row = mysqli_fetch_assoc($select_user);
                     <div class="form-group" ">
                       <label for="title">Last Name</label>
                       <input value="
-                        <?php echo htmlspecialchars(stripslashes($last)); ?>"  type="text" class="form-control" name="l_name">
+                        <?php echo htmlspecialchars(stripslashes($last));?>"  type="text" class="form-control" name="l_name">
                       </div>
                       <div class="form-group" >
                         <label for="title">email</label>

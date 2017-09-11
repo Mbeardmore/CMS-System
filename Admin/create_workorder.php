@@ -91,15 +91,21 @@ echo '
                 <br>
                 <br>
                 <br>
-<<<<<<< HEAD
-                <div class="form-group" style="max-width:45%;display:block;position:relative;top:-50px">
-=======
-                <div class="form-group" style="max-width:45%;display:block;" style=""">
->>>>>>> 2225d3fae95dbaaefa2784401b8aa2df28470f84
-                    <label for="post_content">Job Details</label>
+                <div class ="form-group" style="display:flow-root;position: relative;top:-50px">
+                <div class="form-group" style="width:45%;top:-50px;float:left;">
+
+                    <label for="Job-Details">Job Details</label>
                     <textarea class="form-control " name="Job-Details" id="" cols="30" rows="10">
                     </textarea>
                 </div>
+                <div class="form-group" style="width:45%;top:-50px;float:right;">
+
+                    <label for="Procedure">Procedure</label>
+                    <textarea class="form-control " name="Procedure" id="" cols="30" rows="10">
+                    </textarea>
+                </div>
+                </div>
+
                 <div class="form-group">
                     <input class="btn btn-primary" type="submit" name="create_wo" value="create">
                 </div>
@@ -111,11 +117,7 @@ echo '
 </div>
 </div>
 </div>';
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 2225d3fae95dbaaefa2784401b8aa2df28470f84
 if (isset($_POST['create_wo'])) {
   createworkorder();
 }
