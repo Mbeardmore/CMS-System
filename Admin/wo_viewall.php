@@ -3,7 +3,7 @@
 
 include "Includes/header.php";
 
-if (isset($_SESSION['ID']) && $_SESSION['user_role']=='Admin' ||  $_SESSION['user_role'] == 'Manager') {
+if (isset($_SESSION['ID'])) {
 
 include "Includes/navbar.php";
 
@@ -21,7 +21,7 @@ include "Includes/sidenav.php";
    <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Item Search</h1>
+                    <h1 class="page-header">Work Order Navigation</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -30,7 +30,10 @@ include "Includes/sidenav.php";
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            DataTables Advanced Tables
+                            Work Orders
+                            <div class="ibox-tools">
+                                <a href="create_workorder.php" style="float:right;position: relative;top:-19px;background-color:lightseagreen;border-color:lightseagreen;" class="btn btn-primary btn-xs">Create new project</a>
+                            </div>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -38,24 +41,15 @@ include "Includes/sidenav.php";
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-<<<<<<< HEAD
                                         <th>creator</th>
-                                        <th>Job Location</th>
-                                        <th>Work Order </th>
-                                        <th>Active</th>
-=======
-                                        <th>Job Location</th>
-                                        <th>Work Order </th>
-                                        <th>Active</th>
-                                        <th>creator</th>
->>>>>>> 2225d3fae95dbaaefa2784401b8aa2df28470f84
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th>edit</th>
-                                        <th>view</th>
+                                        <th>WorkOrder Number</th>
+                                        <th>Job Location </th>
+                                        <th>Status</th>
+                                        <th>Start Date</th>
+                                        <th>End Date </th>
+                                        <th>Floor Size</th>
+                                        <th>Actions</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -66,7 +60,9 @@ include "Includes/sidenav.php";
 <?php
 
 WOSearch();
-?>
+
+
+   ?> 
 
 
  </tbody>
@@ -98,7 +94,7 @@ WOSearch();
 
 } else {
 
-    header ("Location: ../index.html");
+    header ("Location: ../index.php");
 }
 
 ?>

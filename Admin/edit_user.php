@@ -55,23 +55,19 @@ $row = mysqli_fetch_assoc($select_user);
               <form action="" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                   <label for="title">username</label>
-                  <input value="
-                    <?php echo htmlspecialchars(stripslashes($username)); ?>"  type="text" class="form-control" name="user">
+                  <input value="<?php echo htmlspecialchars(stripslashes($username)); ?>"  type="text" class="form-control" name="user">
                   </div>
                   <div class="form-group" >
                     <label for="title">First Name</label>
-                    <input  value="
-                      <?php echo htmlspecialchars(stripslashes($first)); ?>" type="text" class="form-control" name="f_name">
+                    <input  value="<?php echo htmlspecialchars(stripslashes($first)); ?>" type="text" class="form-control" name="f_name">
                     </div>
                     <div class="form-group" ">
                       <label for="title">Last Name</label>
-                      <input value="
-                        <?php echo htmlspecialchars(stripslashes($last));?>"  type="text" class="form-control" name="l_name">
+                      <input value="<?php echo htmlspecialchars(stripslashes($last));?>"  type="text" class="form-control" name="l_name">
                       </div>
                       <div class="form-group" >
                         <label for="title">email</label>
-                        <input value="
-                          <?php echo htmlspecialchars(stripslashes($email)); ?>" type="text" class="form-control" name="email">
+                        <input value="<?php echo htmlspecialchars(stripslashes($email)); ?>" type="text" class="form-control" name="email">
                         </div>
                         <div class="form-group">
                           <label for="Role">User Role</label>

@@ -58,10 +58,15 @@ echo '
 
 viewallusers(); 
 
-if (isset($_GET['delete_item'])) {
 
-    deleteitem();
+
+if (isset($_GET['delete_user'])) {
+
+    
+deleteuser();
+
 }
+
 
 echo '
 

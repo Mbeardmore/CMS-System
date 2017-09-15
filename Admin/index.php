@@ -10,6 +10,7 @@ include "Includes/navbar.php";
 include "Includes/sidenav.php";
 
 $final_num = selectall();
+$wo = selectallwo();
 
 ?>
 <div id="wrapper">
@@ -55,12 +56,12 @@ $final_num = selectall();
                                     <i class="fa fa-tasks fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">12</div>
-                                    <div>New Tasks!</div>
+                                    <div class="huge"><?php echo $wo; ?></div>
+                                    <div>Work Orders</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="wo_viewall.php">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

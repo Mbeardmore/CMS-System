@@ -19,23 +19,6 @@ echo '
             <div class="col-lg-12">
                 <h1 class="page-header">Create Work order</h1>
             </div>
-            <div class="form-group" style="display:inline-grid;margin-left:1%;">
-                <label for="jobtype"> Job Type </label>
-                <select class="selectpicker" name="Jobtype">
-                    <option value="Stone_rest">Stone Floor Restoration</option>
-                    <option value="wood_rest">Wood Floor Restoration</option>
-                    <option value="Hardfloor_rest">Hard Floor Restoration</option>
-                    <option value="carpet_clean">Carpet Cleaning</option>
-                    <option value="Slip_Treatment">Slip Treatment</option>
-                    <option value="Apple_Strip_FOH">Apple Deep & Seal FOH</option>
-                    <option value="Apple_ardex">Apple Ardex Removal</option>
-                    <option value="Apple_hone">Apple Stone Honing</option>
-                    <option value="Apple_strip_BOH">Apple Strip & Seal BOH</option>
-
-
-
-                </select>
-                </div>
         </div>
         <!-- /.row -->
         <div class="row">
@@ -50,7 +33,22 @@ echo '
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
-            <form action="" method="POST" enctype="multipart/form-data">
+                <form method="POST" enctype="multipart/form-data">
+                <div class="form-group" style="display:inline-grid;">
+                <label for="jobtype"> Job Type </label>
+                <select class="selectpicker" name="Jobtype">
+                    <option value="Stone_rest">Stone Floor Restoration</option>
+                    <option value="wood_rest">Wood Floor Restoration</option>
+                    <option value="Hardfloor_rest">Hard Floor Restoration</option>
+                    <option value="carpet_clean">Carpet Cleaning</option>
+                    <option value="Slip_Treatment">Slip Treatment</option>
+                    <option value="Apple_Strip_FOH">Apple Deep & Seal FOH</option>
+                    <option value="Apple_ardex">Apple Ardex Removal</option>
+                    <option value="Apple_hone">Apple Stone Honing</option>
+                    <option value="Apple_strip_BOH">Apple Strip & Seal BOH</option>
+                </select>
+                </div>
+                <br>
                 <div class="form-group" style="float:left;width:45%;">
                     <label for="title">Job Location</label>
                     <input type="text" class="form-control" name="job_location">
@@ -66,8 +64,9 @@ echo '
                 <div class="form-group" style="max-width:25%; display:block;">
                     <label for="exampleSelect1">Active</label>
                     <select class="form-control" id="exampleSelect1" name="Active">
-                        <option value="Not Active">Not Active</option>
-                        <option value="Active">Active </option>
+                        <option value="Pending">Pending</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Cancelled">Cancelled</option>
                     </select>
                 </div>
                 <div class="form-group" name="dates" style="display:inline-table;">
@@ -81,11 +80,15 @@ echo '
                 </div>
                 </div>
                 <div class="form-group" style="display:inline-grid;position:relative;right:22.6%;top:10px;"">
-                <label for="assigned"> Assign Users </label>
-                <select class="selectpicker" name="assigned[]" multiple data-actions-box="true" data-live-search="true">';
+                <label for="assign"> Assigned Technicians </label>
+                <select class="selectpicker" multiple="multiple" name="assigned[]" multiple data-actions-box="true" data-live-search="true">';
                 usersearch();
                 echo '
                 </select>
+                </div>
+                <div class="form-group" style="display:inline-grid;position:relative;left:18%;top:10px;width: 30%"">
+                <label for="assigned">Site Contact</label>
+                <input type="text" class="form-control" name="site_contact">
                 </div>
                 <br>
                 <br>
@@ -93,17 +96,14 @@ echo '
                 <br>
                 <div class ="form-group" style="display:flow-root;position: relative;top:-50px">
                 <div class="form-group" style="width:45%;top:-50px;float:left;">
-
                     <label for="Job-Details">Job Details</label>
-                    <textarea class="form-control " name="Job-Details" id="" cols="30" rows="10">
-                    </textarea>
+                    <textarea class="form-control" name="Job-Details" id="" cols="30" rows="10" style="float:left;"></textarea>
                 </div>
                 <div class="form-group" style="width:45%;top:-50px;float:right;">
-
                     <label for="Procedure">Procedure</label>
-                    <textarea class="form-control " name="Procedure" id="" cols="30" rows="10">
-                    </textarea>
+                    <textarea style="padding-left:-75px"class="form-control " name="Procedure" id="" cols="30" rows="10"></textarea>
                 </div>
+  
                 </div>
 
                 <div class="form-group">
@@ -120,6 +120,9 @@ echo '
 
 if (isset($_POST['create_wo'])) {
   createworkorder();
+
+
+
 }
 } else {
       header ("Location: ../index.html");

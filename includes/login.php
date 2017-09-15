@@ -35,6 +35,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
              $_SESSION['ID'] = $UID;
              $_SESSION['u_name'] = $uname;
+             $_SESSION['user_image'] =$uimage;
              $_SESSION['u_first'] = $ufirst;
              $_SESSION['u_last'] = $ulast;
              $_SESSION['u_email'] = $uemail;

@@ -65,7 +65,7 @@ echo '
       </div>
       <div class="form-group">
         <label class="custom-file">
-        <input type="file" id="file" class="custom-file-input">
+        <input type="file" id="file" name="image_upload" class="custom-file-input">
         <span class="custom-file-control"></span>
         </label>
         </div>

@@ -79,6 +79,14 @@ function selectall()
     return $final_num;
 }
 
+function selectallwo()
+{
+    global $connection;
+    $query      = "SELECT * FROM work_orders";
+    $select_all = mysqli_query($connection, $query);
+    $wo  = mysqli_num_rows($select_all);
+    return $wo;
+}
 
 function createitem() {
 
@@ -132,16 +140,20 @@ function createuser() {
 
 
     $username = escape($_POST['user']);
+    $postimage = $_FILES['image_upload']['name'];
+    $postimage_tmp = $_FILES['image_upload']['tmp_name'];
     $fname = escape($_POST['f_name']);
     $lname = escape($_POST['l_name']);
     $email = escape($_POST['email']);
     $pwd = escape($_POST['pwd']);
     $userrole = escape ($_POST['user_role']);
 
+    move_uploaded_file($postimage_tmp, "Images/user-images/$postimage ");
+
     $password = password_hash( $pwd, PASSWORD_BCRYPT, array('cost' => 12));
 
-    $query = "INSERT INTO user (u_name, u_first, u_last, u_email, u_pwd, user_role) ";
-    $query .= "VALUES ('{$username}','{$fname}','{$lname}','{$email}','{$password}','{$userrole}') ";
+    $query = "INSERT INTO user (u_name, user_image, u_first, u_last, u_email, u_pwd, user_role) ";
+    $query .= "VALUES ('{$username}','{$postimage}','{$fname}','{$lname}','{$email}','{$password}','{$userrole}') ";
 
     $result = mysqli_query($connection, $query);
 
@@ -176,7 +188,7 @@ function viewallusers() {
         echo "<td>" . $lastonline . "</td>";
 
         echo "<td><a href='edit_user.php?edit_user={$id}'>Edit</a></td>";
-        echo "<td><a href='item_search.php?delete_item={$id}'>Delete</a></td>";
+        echo "<td><a href='view_users.php?delete_user={$id}'>Delete</a></td>";
         echo "</tr>";
 
 
@@ -271,9 +283,28 @@ function usersearch()
 
   }
 
+
+function deleteuser() {
+
+global $connection;
+
+if (isset($_GET['delete_user'])) {
+
+$user_id = escape($_GET['delete_user']);
+
+
+}
+$query = "DELETE  FROM user WHERE ID = $user_id ";
+$select_item = mysqli_query($connection, $query);
+echo "<p class='bg-sucess'> user Deleted.";
+
+}
+
   function createworkorder() {
 
     global $connection;
+
+      $jobtype = escape ($_POST['Jobtype']);
       $creator = $_SESSION['u_first'];
       $joblocation = escape($_POST['job_location']);
       $wonumber = escape($_POST['wo_number']);
@@ -284,60 +315,189 @@ function usersearch()
       $assigned = $_POST['assigned'];
       $Jobdetails = escape ($_POST['Job-Details']);
       $procedure = escape ($_POST['Procedure']);
-      $sitecontact = "test";
+      $sitecontact = escape($_POST['site_contact']);
       $datetoday = date('d/m/Y');
+      $assignedtech = implode(",", $assigned);
 
-      $assignedtech = implode(", ", $assigned);
 
-      $query = "INSERT INTO work_orders (creator, Work_Order, job_location, date_today, date_start, date_end, Assigned_user,  job_info, procedures, floor_size, Active, site_contact) ";
-      $query .= "VALUES ('{$creator}','{$wonumber}','{$joblocation}','{$datetoday}','{$startdate}','{$enddate}','{$assignedtech}','{$Jobdetails}','{$procedure}',{$floorsize}','{$active}','{$sitecontact}') ";
-
+      $query = "INSERT INTO work_orders (Job_type, creator, Work_Order, job_location, date_today, date_start, date_end, Assigned_user, job_info, procedures, floor_size, status, site_contact) ";
+      $query .= "VALUES ('{$jobtype}','{$creator}','{$wonumber}','{$joblocation}','{$datetoday}','{$startdate}','{$enddate}','{$assignedtech}','{$Jobdetails}','{$procedure}','{$floorsize}','{$active}','{$sitecontact}') ";
+     
       $result = mysqli_query($connection, $query);
+ 
 
       confirmQuery($result);
   }
 
 
-  // function WOSearch()
-  // {
-  //
-  //     global $connection;
-  //
-  //     $query = "SELECT * FROM work_orders";
-  //
-  //     $display_all = mysqli_query($connection, $query);
-  //
-  //
-  //     while ($row = mysqli_fetch_assoc($display_all)) {
-  //         $id             = $row['ID'];
-  //         $image          = $row['item_image'];
-  //         $name           = $row['prod_name'];
-  //         $supplier       = $row['supplier_name'];
-  //         $pexvat         = $row['P_PRICE_EXVAT'];
-  //         $sellprice      = $row['P_SELL'];
-  //         $size           = $row['SIZE'];
-  //         $stock          = $row['stock_level'];
-  //         $lastpurchase   = $row['L_PURCHASE'];
-  //         $Stock_Location = $row['Stock_Location'];
-  //
-  //         echo "<tr>";
-  //         echo "<td>" . $id . "</td>";
-  //         echo "<td>" . $image . "</td>";
-  //         echo "<td>" . $name . "</td>";
-  //         echo "<td>" . $supplier . "</td>";
-  //         echo "<td>" . $pexvat . "</td>";
-  //         echo "<td>" . $sellprice . "</td>";
-  //         echo "<td>" . $size . "</td>";
-  //         echo "<td>" . $stock . "</td>";
-  //         echo "<td>" . $lastpurchase . "</td>";
-  //         echo "<td>" . $Stock_Location . "</td>";
-  //         echo "<td><a href='Alter_item.php?edit_item={$id}'>Edit</a></td>";
-  //         echo "<td><a href='item_search.php?delete_item={$id}'>Delete</a></td>";
-  //         echo "</tr>";
-  //
-  //
-  //     }
-  //
-  //
-  // }
+  function WOSearch()
+  {
+
+      global $connection;
+
+      $query = "SELECT * FROM work_orders";
+
+      $display_all = mysqli_query($connection, $query);
+
+
+      while ($row = mysqli_fetch_assoc($display_all)) {
+          $id             = $row['ID'];
+          $creator        = $row['creator'];
+          $wonum          = $row['Work_Order'];
+          $jobloc         = $row['job_location'];
+          $todaydate      = $row['date_today'];
+          $datestart      = $row['date_start'];
+          $dateend        = $row['date_end'];
+          $Assigned       = $row['Assigned_user'];
+          $jobinfo        = $row['job_info'];
+          $procedures     = $row['procedures'];
+          $floorsize      = $row['floor_size'];
+          $status         = $row['status'];
+          $contact        = $row['site_contact'];
+
+          echo "<tr>";
+          echo "<td>" . $id . "</td>";
+          echo "<td>" . $creator . "</td>";
+          echo "<td>" . $wonum . "</td>";
+          echo "<td>" . $jobloc . "</td>";
+          echo "<td>" . $status . "</td>";
+          echo "<td>" . $datestart . "</td>";
+          echo "<td>" . $dateend . "</td>";
+          echo "<td>" . $floorsize . "</td>";
+          echo "<td class='project-actions'>
+                <a href='view_wo.php?view_wo={$id}' class='btn btn-white btn-sm'><i class='fa fa-folder'></i> View </a>
+                <a href='Alter_wo.php?edit_wo={$id}' class='btn btn-white btn-sm'><i class='fa fa-pencil'></i> Edit </a>
+                <a href='delete_wo.php?delete_wo={$id}' class='btn btn-white btn-sm'><i class='fa fa-trash'></i> Delete </a>
+          </td>";
+          echo "</tr>";
+
+
+      }
+
+
+  }
+
+
+
+  function addnote($wonum, $tech) {
+   global $connection; 
+
+
+   $note = escape($_POST['add-note']);
+
+
+
+
+   $query = "INSERT INTO wo_notes (wo_num, message, tech) ";
+   $query .= "VALUES('{$wonum}','{$note}','{$tech}') ";
+
+   $addnote = mysqli_query($connection, $query);
+
+   confirmQuery($addnote);
+  }
+
+
+function handleimages($jobloc, $wonum, $tech) {
+  global $connection;
+
+$path = "Images/wo_images/$wonum.$jobloc/";
+
+if (is_dir($path))
+  {
+  $valid_formats = array(
+    "jpg",
+    "jpeg",
+    "JPEG",
+    "JPG",
+    "png"
+  );
+  foreach($_FILES['files']['name'] as $f => $name)
+    {
+    $fileext = explode('.', $name);
+    $actualExt = strtolower(end($fileext));
+    if (in_array($actualExt, $valid_formats))
+      {
+      move_uploaded_file($_FILES['files']['tmp_name'][$f], $path . $name);
+      $query = "INSERT INTO work_order_images (wo_number, Location, Uploader) ";
+      $query .= "VALUES ('{$wonum}','{$name}','{$tech}') ";
+
+      $result = mysqli_query($connection, $query);
+
+      confirmQuery($result);
+      }
+      else
+      {
+      echo "Wrong File Extension";
+      }
+    }
+  }
+  else
+  {
+  mkdir($path);
+  if (is_dir($path))
+    {
+    $valid_formats = array(
+      "jpg",
+      "jpeg",
+      "JPEG",
+      "JPG",
+      "png"
+    );
+    foreach($_FILES['files']['name'] as $f => $name)
+      {
+      $fileext = explode('.', $name);
+      $actualExt = strtolower(end($fileext));
+      if (in_array($actualExt, $valid_formats))
+        {
+
+        move_uploaded_file($_FILES['files']['tmp_name'][$f], $path . $name);
+
+        $query = "INSERT INTO work_order_images (wo_number, Location, Uploader) ";
+        $query .= "VALUES ('{$wonum}','{$name}','{$tech}') ";
+
+        $result = mysqli_query($connection, $query);
+
+        confirmQuery($result);
+
+        } else
+        {
+        echo "Wrong File Extension";
+        }
+      }
+    }
+  }
+}
+
+
+function completewo() {
+global $id;
+global $connection;
+
+         $techsig        = escape($_POST['Tech']);
+         $clientsig           = escape($_POST['Client']);
+         $satisfaction            = escape($_POST['optradio']);
+         $complete = "Completed";
+
+
+
+
+          $query = "UPDATE work_orders SET ";
+          $query .="tech_sig  = '{$techsig}', ";
+          $query .="Client_sig = '{$clientsig}', ";
+          $query .="sat_rating = '{$satisfaction}', ";
+          $query .="status = '{$complete}' ";
+          $query .= "WHERE ID = {$id} ";
+
+        $update_workorder = mysqli_query($connection,$query);
+
+        confirmQuery($update_workorder);
+
+        
+            }
+
+          
 ?>
+
+
+
+
